@@ -6,6 +6,7 @@ exports.getAllCartData = async (req, res) => {
     var cart = await Cart.findAll({
       where: {
         isDelete: false,
+        user_id: req.body.user_id,
       },
       include: [
         {
@@ -23,9 +24,7 @@ exports.getAllCartData = async (req, res) => {
         message: "Data not found",
       });
     } else {
-      return res.status(200).json({
-        data: cart,
-      });
+      return res.status(200).json(cart);
     }
   } catch (error) {
     return res.status(500).json({

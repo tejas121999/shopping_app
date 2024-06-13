@@ -12,9 +12,7 @@ exports.getAllProduct = async (req, res) => {
         message: "Data not found",
       });
     } else {
-      return res.status(200).json({
-        data: product,
-      });
+      return res.status(200).json(product);
     }
   } catch (error) {
     return res.status(500).json({
